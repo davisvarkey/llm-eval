@@ -133,3 +133,102 @@ Assist users with travel-related inquiries, offering tips, advice, and recommend
 10. Give the evaluation a suitable name, and Submit it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the Refresh toolbar button to check the status.
 
 11. When the evaluation has completed, scroll down if necessary to review the results.
+
+![alt text](image-9.png)
+
+12. At the top of the page, select the Data tab to see the raw data from the evaluation. The data includes the metrics for each input as well as explanations of the reasoning the gpt-4o model applied when assessing the responses.
+
+Top-P Sampling : If P = 0.9 (%), smallest set combined probability is 90%. the model picks from the smallest set of tokens whose combined probability is at least 90%.
+
+Top-K If K = 50 (count), the model picks the next word from the top 50 most likely options.
+
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+
+![alt text](image-12.png)
+
+
+Each LLM based evaluation metrics is achieved by giving specific prompt to the evaluating model. In the case of Likert-scale evaluator, Relevance is evaluated by giving the following prompt to the evaluating model.
+
+<pref>
+system:
+# Instruction
+## Goal
+### You are an expert in evaluating the quality of a RESPONSE from an intelligent system based on provided definition and data. Your goal will involve answering the questions below using the information provided.
+- **Definition**: You are given a definition of the communication trait that is being evaluated to help guide your Score.
+- **Data**: Your input data include QUERY and RESPONSE.
+- **Tasks**: To complete your evaluation you will be asked to evaluate the Data in different ways.
+
+user:
+# Definition
+**Relevance** refers to how effectively a response addresses a question. It assesses the accuracy, completeness, and direct relevance of the response based solely on the given information.
+
+# Ratings
+## [Relevance: 1] (Irrelevant Response)
+**Definition:** The response is unrelated to the question. It provides information that is off-topic and does not attempt to address the question posed.
+
+**Examples:**
+**Query:** What is the team preparing for?
+**Response:** I went grocery shopping yesterday evening.
+
+**Query:** When will the company's new product line launch?
+**Response:** International travel can be very rewarding and educational.
+
+## [Relevance: 2] (Incorrect Response)
+**Definition:** The response attempts to address the question but includes incorrect information. It provides a response that is factually wrong based on the provided information.
+
+**Examples:**
+**Query:** When was the merger between the two firms finalized?
+**Response:** The merger was finalized on April 10th.
+
+**Query:** Where and when will the solar eclipse be visible?
+**Response:** The solar eclipse will be visible in Asia on December 14th.
+
+## [Relevance: 3] (Incomplete Response)
+**Definition:** The response addresses the question but omits key details necessary for a full understanding. It provides a partial response that lacks essential information.
+
+**Examples:**
+**Query:** What type of food does the new restaurant offer?
+**Response:** The restaurant offers Italian food like pasta.
+
+**Query:** What topics will the conference cover?
+**Response:** The conference will cover renewable energy and climate change.
+
+## [Relevance: 4] (Complete Response)
+**Definition:** The response fully addresses the question with accurate and complete information. It includes all essential details required for a comprehensive understanding, without adding any extraneous information.
+
+**Examples:**
+**Query:** What type of food does the new restaurant offer?
+**Response:** The new restaurant offers Italian cuisine, featuring dishes like pasta, pizza, and risotto.
+
+**Query:** What topics will the conference cover?
+**Response:** The conference will cover renewable energy, climate change, and sustainability practices.
+
+## [Relevance: 5] (Comprehensive Response with Insights)
+**Definition:** The response not only fully and accurately addresses the question but also includes additional relevant insights or elaboration. It may explain the significance, implications, or provide minor inferences that enhance understanding.
+
+**Examples:**
+**Query:** What type of food does the new restaurant offer?
+**Response:** The new restaurant offers Italian cuisine, featuring dishes like pasta, pizza, and risotto, aiming to provide customers with an authentic Italian dining experience.
+
+**Query:** What topics will the conference cover?
+**Response:** The conference will cover renewable energy, climate change, and sustainability practices, bringing together global experts to discuss these critical issues.
+
+
+
+# Data
+QUERY: {{query}}
+RESPONSE: {{response}}
+
+
+# Tasks
+## Please provide your assessment Score for the previous RESPONSE in relation to the QUERY based on the Definitions above. Your output should include the following information:
+- **ThoughtChain**: To improve the reasoning process, think step by step and include a step-by-step explanation of your thought process as you analyze the data based on the definitions. Keep it brief and start your ThoughtChain with "Let's think step by step:".
+- **Explanation**: a very short explanation of why you think the input Data should get that Score.
+- **Score**: based on your previous analysis, provide your Score. The Score you give MUST be a integer score (i.e., "1", "2"...) based on the levels of the definitions.
+
+
+## Please provide your answers between the tags: <S0>your chain of thoughts</S0>, <S1>your explanation</S1>, <S2>your Score</S2>.
+# Output
+</pre>
