@@ -12,14 +12,14 @@ We are interested in evaluating how well the fine-tuned model performs on this s
 
 Need to complete the following steps before evaluating the model:
 
-- Create an Azure AI Foundry hub and project with following information:
+## Create an Azure AI Foundry hub and project with following information:
   - Hub name: llm-eval-hub
   - Project name: travel-llm-eval
   - Description: Evaluation of fine-tuned LLM model on travel dataset
   - Region: East US
   - Resource group: llm-eval-rg
 
-- Deploy models
+## Deploy models
 
 you’ll evaluate the performance of a gpt-4o-mini model. You’ll also use a gpt-4o model to generate AI-assisted evaluation metrics.
 
@@ -43,9 +43,39 @@ You can see both deployed models in the Model deployments tab.
 
 ![alt text](image.png)
 
+
 You can also see various services available and the endpoints for the deployed models in the Endpoints tab. 
+
+
 
 ![alt text](image-1.png)
 
 
 Note that when you  deploy the customized model. This creates a dedicated endpoint that serves requests using your fine-tuned version—not the generic Azure-hosted model.
+
+## Manual evaluation
+
+You can manually review model responses based on test data. Manually reviewing allows you to test different inputs to evaluate whether the model performs as expected.
+1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the Protect and govern section, select Evaluation.
+2. If the Create a new evaluation pane opens automatically, select Cancel to close it.
+3. In the Evaluation page, view the Manual evaluations tab and select + New manual evaluation.
+4. In the Configurations section, in the Model list, select your gpt-4o model deployment.
+5. Change the System message to the following instructions for an AI travel assistant:
+
+code
+Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+
+6. In the Manual evaluation result section, select Import test data and upload the travel_evaluation_data.jsonl file you downloaded previously; scrolling down to map the dataset fields as follows:
+Input: Question
+Expected response: ExpectedResponse
+7. Review the questions and expected answers in the test file - you’ll use these to evaluate the responses that the model generates.
+8. Select Run from the top bar to generate outputs for all questions you added as inputs. After a few minutes, the responses from the model should be shown in a new Output column, like this:
+
+
+![alt text](image-3.png)
+
+![alt text](image-2.png)
+
+9. Review the outputs for each question, comparing the output from the model to the expected answer and “scoring” the results by selecting the thumbs up or down icon at the bottom right of each response.
+10. After you’ve scored the responses, review the summary tiles above the list. Then in the toolbar, select Save results and assign a suitable name. Saving results enables you to retrieve them later for further evaluation or comparison with a different model.
+
