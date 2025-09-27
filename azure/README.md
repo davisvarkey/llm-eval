@@ -62,8 +62,9 @@ You can manually review model responses based on test data. Manually reviewing a
 4. In the Configurations section, in the Model list, select your gpt-4o model deployment.
 5. Change the System message to the following instructions for an AI travel assistant:
 
-code
+<pre>
 Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+</pre>
 
 6. In the Manual evaluation result section, select Import test data and upload the travel_evaluation_data.jsonl file you downloaded previously; scrolling down to map the dataset fields as follows:
 Input: Question
