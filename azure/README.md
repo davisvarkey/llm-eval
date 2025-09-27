@@ -151,7 +151,7 @@ Top-K If K = 50 (count), the model picks the next word from the top 50 most like
 
 Each LLM based evaluation metrics is achieved by giving specific prompt to the evaluating model. In the case of Likert-scale evaluator, Relevance is evaluated by giving the following prompt to the evaluating model.
 
-<pref>
+<pre>
 system:
 # Instruction
 ## Goal
