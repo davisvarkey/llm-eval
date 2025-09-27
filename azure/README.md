@@ -79,3 +79,45 @@ Expected response: ExpectedResponse
 9. Review the outputs for each question, comparing the output from the model to the expected answer and “scoring” the results by selecting the thumbs up or down icon at the bottom right of each response.
 10. After you’ve scored the responses, review the summary tiles above the list. Then in the toolbar, select Save results and assign a suitable name. Saving results enables you to retrieve them later for further evaluation or comparison with a different model.
 
+## Use automated evaluation
+
+While manually comparing model output to your own expected responses can be a useful way to assess a model’s performance, it’s a time-consuming approach in scenarios where you expect a wide range of questions and responses; and it provides little in the way of standardized metrics that you can use to compare different model and prompt combinations.
+
+Automated evaluation is an approach that attempts to address these shortcomings by calculating metrics and using AI to assess responses for coherence, relevance, and other factors.
+
+1. Use the back arrow (←) next to the Manual evaluation page title to return to the Evaluation page.
+2. View the Automated evaluations tab.
+3. Select Create a new evaluation, and when prompted, select the option to evaluate a Evaluate a model and select Next.
+4. On the Select data source page, select Use your dataset and select the travel_evaluation_data_jsonl_xxxx… dataset based on the file you uploaded previously, and select Next.
+5. On the Test your model page, select the gpt-4o-mini model and change the System message to the same instructions for an AI travel assistant you used previously:
+
+code
+Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+
+6. For the query field, select {{item.question}}.
+7. Select Next to move to the next page.
+8. On the Configure evaluators page, use the +Add button to add the following evaluators, configuring each one as follows:
+    Model scorer:
+        Criteria name: Select the Semantic_similarity preset
+        Grade with: Select your gpt-4o model
+        User settings (at the bottom):
+
+            Output: {{sample.output_text}}
+            Ground Truth: {{item.ExpectedResponse}}
+
+
+    Likert-scale evaluator:
+        Criteria name: Select the Relevance preset
+        Grade with: Select your gpt-4o model
+        Query: {{item.question}}
+    Text similarity:
+        Criteria name: Select the F1_Score preset
+        Ground truth: {{item.ExpectedResponse}}
+    Hateful and unfair content:
+        Criteria name: Hate_and_unfairness
+        Query: {{item.question}}
+
+9. Select Next and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the gpt-4o-mini model for semantic similarity, relevance, F1 score, and hateful and unfair language.
+10. Give the evaluation a suitable name, and Submit it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the Refresh toolbar button to check the status.
+
+11. When the evaluation has completed, scroll down if necessary to review the results.
