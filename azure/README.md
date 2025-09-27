@@ -80,7 +80,7 @@ Expected response: ExpectedResponse
 9. Review the outputs for each question, comparing the output from the model to the expected answer and “scoring” the results by selecting the thumbs up or down icon at the bottom right of each response.
 10. After you’ve scored the responses, review the summary tiles above the list. Then in the toolbar, select Save results and assign a suitable name. Saving results enables you to retrieve them later for further evaluation or comparison with a different model.
 
-## Use automated evaluation
+## Use automated evaluation (LLM as Judge)
 
 While manually comparing model output to your own expected responses can be a useful way to assess a model’s performance, it’s a time-consuming approach in scenarios where you expect a wide range of questions and responses; and it provides little in the way of standardized metrics that you can use to compare different model and prompt combinations.
 
