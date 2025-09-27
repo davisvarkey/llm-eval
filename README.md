@@ -15,17 +15,17 @@ You can evaluate your generative AI models using the following methods:
 
 - AI-assisted metrics - Use AI models to evaluate other AI models by generating scores based on predefined criteria.  These metrics can include:
 
-    Generation quality metrics: These metrics evaluate the overall quality of the generated text, considering factors like creativity, coherence, and adherence to the desired style or tone.
+    - Generation quality metrics: These metrics evaluate the overall quality of the generated text, considering factors like creativity, coherence, and adherence to the desired style or tone.
 
-    Risk and safety metrics: These metrics assess the potential risks and safety concerns associated with the model's outputs. They help ensure that the model doesn't generate harmful or biased content.
+    - Risk and safety metrics: These metrics assess the potential risks and safety concerns associated with the model's outputs. They help ensure that the model doesn't generate harmful or biased content.
 
 - Natural language processing (NLP) metrics are also valuable in evaluating model performance. One such metric is the F1-score, which measures the ratio of the number of shared words between the generated and ground truth answers. The F1-score is useful for tasks like text classification and information retrieval, where precision and recall are important. Other common NLP metrics include:
 
-    BLEU: Bilingual Evaluation Understudy metric
+    - BLEU: Bilingual Evaluation Understudy metric
 
-    METEOR: Metric for Evaluation of Translation with Explicit Ordering
+    - METEOR: Metric for Evaluation of Translation with Explicit Ordering
 
-    ROUGE: Recall-Oriented Understudy for Gisting Evaluation
+    - ROUGE: Recall-Oriented Understudy for Gisting Evaluation
 
 All of these metrics are used to quantify the level of overlap in the model-generated response and the ground truth (expected response).
 
