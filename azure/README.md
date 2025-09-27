@@ -119,6 +119,14 @@ Assist users with travel-related inquiries, offering tips, advice, and recommend
         Criteria name: Hate_and_unfairness
         Query: {{item.question}}
 
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
 9. Select Next and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the gpt-4o-mini model for semantic similarity, relevance, F1 score, and hateful and unfair language.
 10. Give the evaluation a suitable name, and Submit it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the Refresh toolbar button to check the status.
 
