@@ -99,25 +99,25 @@ Assist users with travel-related inquiries, offering tips, advice, and recommend
 6. For the query field, select {{item.question}}.
 7. Select Next to move to the next page.
 8. On the Configure evaluators page, use the +Add button to add the following evaluators, configuring each one as follows:
-    Model scorer:
-        Criteria name: Select the Semantic_similarity preset
-        Grade with: Select your gpt-4o model
-        User settings (at the bottom):
+
+    - Model scorer:
+        - Criteria name: Select the Semantic_similarity preset
+        - Grade with: Select your gpt-4o model
+        - User settings (at the bottom):
 
             Output: {{sample.output_text}}
             Ground Truth: {{item.ExpectedResponse}}
 
-
-    Likert-scale evaluator:
-        Criteria name: Select the Relevance preset
-        Grade with: Select your gpt-4o model
-        Query: {{item.question}}
-    Text similarity:
-        Criteria name: Select the F1_Score preset
-        Ground truth: {{item.ExpectedResponse}}
-    Hateful and unfair content:
-        Criteria name: Hate_and_unfairness
-        Query: {{item.question}}
+    - Likert-scale evaluator:
+        - Criteria name: Select the Relevance preset
+        - Grade with: Select your gpt-4o model
+        - Query: {{item.question}}
+    - Text similarity:
+        - Criteria name: Select the F1_Score preset
+        - Ground truth: {{item.ExpectedResponse}}
+    - Hateful and unfair content:
+        - Criteria name: Hate_and_unfairness
+        - Query: {{item.question}}
 
 ![alt text](image-4.png)
 
