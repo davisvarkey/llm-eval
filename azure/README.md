@@ -91,8 +91,9 @@ Automated evaluation is an approach that attempts to address these shortcomings 
 4. On the Select data source page, select Use your dataset and select the travel_evaluation_data_jsonl_xxxx… dataset based on the file you uploaded previously, and select Next.
 5. On the Test your model page, select the gpt-4o-mini model and change the System message to the same instructions for an AI travel assistant you used previously:
 
-code
+<pre>
 Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+</pre>
 
 6. For the query field, select {{item.question}}.
 7. Select Next to move to the next page.
